@@ -1,124 +1,130 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Media Pembelajaran Matematika 10 SMK</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0; padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header, footer {
-            background-color: #004080;
-            color: white;
-            text-align: center;
-            padding: 1.5rem 1rem;
-        }
-        main {
-            flex: 1;
-            padding: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-        h2 {
-            margin-top: 1.5rem;
-            color: #004080;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            margin: 0.7rem 0;
-            font-size: 1.1rem;
-        }
-        a {
-            color: #004080;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .section-desc {
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soal dan Latihan Persamaan Kuadrat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #f9f9f9;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #004080;
+    }
+    .soal-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+    .soal-text {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      margin-right: 0.5rem;
+    }
+    button:hover {
+      background-color: #004080;
+    }
+    .jawaban {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #006600;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Media Pembelajaran Matematika 10 SMK</h1>
-    </header>
-    <main>
-        <section id="pengertian">
-            <h2>Pengertian Persamaan Kuadrat</h2>
-            <p class="section-desc">
-                Persamaan kuadrat adalah persamaan polinomial berderajat dua yang berbentuk umum \( ax^2 + bx + c = 0 \), dengan \(a \neq 0\).
-            </p>
-        </section>
+  <h1>Soal dan Latihan Persamaan Kuadrat</h1>
+  <div class="soal-container">
+    <div id="soal" class="soal-text">Memuat soal...</div>
+    <button id="btn-jawaban">Tampilkan Jawaban</button>
+    <button id="btn-soal-baru">Soal Baru</button>
+    <div id="jawaban" class="jawaban" style="display:none;"></div>
+  </div>
 
-        <section id="materi">
-            <h2>Materi Persamaan Kuadrat</h2>
-            <ul>
-                <li>Pengertian dan bentuk umum persamaan kuadrat</li>
-                <li>Metode penyelesaian: faktorisasi, melengkapkan kuadrat, rumus kuadrat</li>
-                <li>Grafik fungsi kuadrat</li>
-                <li>Aplikasi persamaan kuadrat dalam masalah nyata</li>
-            </ul>
-        </section>
+  <script>
+    // Data soal dan jawaban persamaan kuadrat
+    const soalList = [
+      {
+        soal: "Selesaikan persamaan kuadrat: x² - 5x + 6 = 0",
+        jawaban: "Akar-akar persamaan adalah x = 2 dan x = 3."
+      },
+      {
+        soal: "Tentukan akar-akar persamaan: 2x² + 3x - 2 = 0",
+        jawaban: "Akar-akar persamaan adalah x = 0.5 dan x = -2."
+      },
+      {
+        soal: "Hitung nilai maksimum fungsi: f(x) = -x² + 4x + 1",
+        jawaban: "Nilai maksimum adalah 5, terjadi pada x = 2."
+      },
+      {
+        soal: "Faktorkan persamaan kuadrat: x² + 7x + 12",
+        jawaban: "Faktorisasi: (x + 3)(x + 4)."
+      },
+      {
+        soal: "Selesaikan persamaan kuadrat dengan rumus kuadrat: x² - 4x - 5 = 0",
+        jawaban: "Akar-akar persamaan adalah x = 5 dan x = -1."
+      }
+    ];
 
-        <section id="contoh-soal">
-            <h2>Contoh Soal Persamaan Kuadrat</h2>
-            <ul>
-                <li>Soal 1: Selesaikan \(x^2 - 5x + 6 = 0\)</li>
-                <li>Soal 2: Tentukan akar-akar persamaan \(2x^2 + 3x - 2 = 0\)</li>
-                <li>Soal 3: Tentukan nilai maksimum fungsi \(f(x) = -x^2 + 4x + 1\)</li>
-            </ul>
-        </section>
+    let currentIndex = 0;
 
-        <section id="lembar-kerja">
-            <h2>Lembar Kerja Siswa</h2>
-            <p>
-                <a href="lembar-kerja-persamaan-kuadrat.pdf" target="_blank" rel="noopener">Download Lembar Kerja Persamaan Kuadrat (PDF)</a>
-            </p>
-        </section>
+    const soalEl = document.getElementById("soal");
+    const jawabanEl = document.getElementById("jawaban");
+    const btnJawaban = document.getElementById("btn-jawaban");
+    const btnSoalBaru = document.getElementById("btn-soal-baru");
 
-        <section id="ppt">
-            <h2>PPT Persamaan Kuadrat</h2>
-            <p>
-                <a href="ppt-persamaan-kuadrat.pptx" target="_blank" rel="noopener">Download PPT Persamaan Kuadrat</a>
-            </p>
-        </section>
+    // Fungsi tampilkan soal berdasarkan index
+    function tampilkanSoal(index) {
+      const data = soalList[index];
+      soalEl.textContent = data.soal;
+      jawabanEl.style.display = "none";
+      jawabanEl.textContent = "";
+      btnJawaban.textContent = "Tampilkan Jawaban";
+    }
 
-        <section id="video">
-            <h2>Video Youtube tentang Persamaan Kuadrat</h2>
-            <p>
-                <a href="https://www.youtube.com/watch?v=3v8LZc4rJj0" target="_blank" rel="noopener">Tonton Video Persamaan Kuadrat</a>
-            </p>
-        </section>
+    // Event tombol tampilkan jawaban
+    btnJawaban.addEventListener("click", () => {
+      if (jawabanEl.style.display === "none") {
+        jawabanEl.textContent = soalList[currentIndex].jawaban;
+        jawabanEl.style.display = "block";
+        btnJawaban.textContent = "Sembunyikan Jawaban";
+      } else {
+        jawabanEl.style.display = "none";
+        btnJawaban.textContent = "Tampilkan Jawaban";
+      }
+    });
 
-        <section id="ebook">
-            <h2>E-book PDF Persamaan Kuadrat</h2>
-            <p>
-                <a href="ebook-persamaan-kuadrat.pdf" target="_blank" rel="noopener">Download E-book Persamaan Kuadrat (PDF)</a>
-            </p>
-        </section>
-    </main>
-    <footer>
-        <p>@2025 10 SMK</p>
-    </footer>
+    // Event tombol soal baru (acak)
+    btnSoalBaru.addEventListener("click", () => {
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * soalList.length);
+      } while (newIndex === currentIndex);
+      currentIndex = newIndex;
+      tampilkanSoal(currentIndex);
+    });
+
+    // Tampilkan soal pertama saat halaman dimuat
+    tampilkanSoal(currentIndex);
+  </script>
 </body>
 </html>
